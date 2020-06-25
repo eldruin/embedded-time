@@ -1,4 +1,5 @@
-use crate::{time_int::TimeInt, Duration, Instant, Period};
+use crate::timer::param::{self, Disarmed, OneShot};
+use crate::{time_int::TimeInt, Duration, Instant, Period, Timer};
 use core::convert::TryFrom;
 
 /// An abstraction for time-keeping items such as hardware timers
@@ -20,5 +21,9 @@ pub trait Clock: Sized {
         let start = Self::now();
         let end = start + dur;
         while Self::now() < end {}
+    }
+
+    fn new_timer<Dur: Duration>() -> Timer<OneShot, Disarmed, Self, Dur> {
+        Timer::<param::None, param::None, Self, Dur>::new()
     }
 }

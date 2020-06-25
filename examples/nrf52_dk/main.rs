@@ -5,7 +5,7 @@ extern crate panic_rtt;
 
 use cortex_m::mutex::CriticalSectionMutex as Mutex;
 use cortex_m_rt::entry;
-use embedded_time::{self as time, Clock, Instant, Period, TimeInt};
+use embedded_time::{self as time, Clock, Instant, Period, TimeInt, Timer};
 use mutex_trait::Mutex as _;
 
 pub mod nrf52 {
